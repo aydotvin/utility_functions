@@ -36,9 +36,9 @@ const didIBottomOut = () => {
  * number.*
  * @returns The sorted array.
  */
-const sortArrayOfObjects = (arrayToSort, keyToSortOn, keyValueType, isDescendingSort = false) => {
+const sortArrayOfObjects = (arrayToSort, keyToSortOn, valueType, isDescendingSort = false) => {
 	let placeHolderArray = [...arrayToSort];
-	switch (keyValueType) {
+	switch (valueType) {
 		case "dateTime":
 			placeHolderArray.sort((a, b) => {
 				keyToSortOn.forEach((key) => {
