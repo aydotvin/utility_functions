@@ -10,7 +10,7 @@
 
 -   ##### This sorts the array of objects based on the keys passed.
 -   ##### arrayToSort -> array of objects
--   ##### keyToSortOn -> keys are passed as an array of strings as given below,\
+-   ##### keyToSortOn -> keys are passed as an array of strings as given below,
     `{ "name":"john", "address":{ "door":97, "street":2, "zip":424242, "geo":{ "lat":111.111, "lng":98.231 } } }`
     ###### key is in first layer of object > ["name"]
     ###### key is in a nested object > ["address", "geo", "lat"]
