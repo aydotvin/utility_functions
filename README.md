@@ -4,7 +4,7 @@
 -   Open the console
 -   Start clicking the buttons
 
-## Description
+# Description
 
 1. ### sortArrayOfObjects(arrayToSort, keyToSortOn, valueType, isDescendingSort = false)
 
