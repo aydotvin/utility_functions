@@ -13,7 +13,7 @@
 -   ##### keyToSortOn -> keys are passed as an array of strings as given below,
     `{ "name":"john", "address":{ "door":97, "street":2, "zip":424242, "geo":{ "lat":111.111, "lng":98.231 } } }`
     ###### key is in first layer of object > ["name"] -> array of objects will be sorted based on "name".
-    ###### key is in a nested object > ["address", "geo", "lat"] -> array of objects will be sorted based on "lat".
+    ###### key is in a nested object > ["address", "geo", "lat"] -> array of objects will be sorted based on "lat"(nested key).
 -   ##### valueType -> the type of the value that is used for sorting. (dateTime, string, number)
 -   ##### isDescendingSort -> optional - false by default
 
