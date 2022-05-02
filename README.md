@@ -32,6 +32,8 @@
 -   ##### By default body is considered as the element.
 -   ##### Using this to trigger on scroll pagination calls until I find a better way to handle the pagination.
 
+---
+
 4. ### deepCopy(obj = {})
 
 -   ##### Deep copies an object.
