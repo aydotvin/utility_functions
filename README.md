@@ -37,3 +37,4 @@
 4. ### deepCopy(obj = {})
 
 -   ##### Deep copies an object.
+-   ##### Returns the deep copied object.
