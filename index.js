@@ -30,81 +30,57 @@ const didIBottomOut = () => {
 	console.log(logText);
 };
 
-// DEFINITIONS
-/**
- * *This function sorts an array of objects by a key value. The key value can be a date, string, or
- * number.*
- * @returns The sorted array.
- */
-const sortArrayOfObjects = (arrayToSort, keyToSortOn, valueType, isDescendingSort = false) => {
-	let placeHolderArray = [...arrayToSort];
-	switch (valueType) {
-		case "dateTime":
-			placeHolderArray.sort((a, b) => {
-				keyToSortOn.forEach((key) => {
-					a = a[key];
-					b = b[key];
-				});
-				const timestampA = new Date(a).getTime();
-				const timestampB = new Date(b).getTime();
-				return timestampA < timestampB ? -1 : 1;
-			});
-			break;
-		case "string":
-			placeHolderArray.sort((a, b) => {
-				keyToSortOn.forEach((key) => {
-					a = a[key];
-					b = b[key];
-				});
-				return a.toLowerCase() < b.toLowerCase() ? -1 : 1;
-			});
-			break;
-		case "number":
-			placeHolderArray.sort((a, b) => {
-				keyToSortOn.forEach((key) => {
-					a = a[key];
-					b = b[key];
-				});
-				return parseFloat(a) < parseFloat(b) ? -1 : 1;
-			});
-			break;
+const deepCopyThis = () => {
+	let x = {
+		name: "VP",
+		address: {
+			door: 1,
+			geo: {
+				lat: 128,
+			},
+		},
+	};
+	console.log("Before changes");
+	console.log("x.name -> VP");
+	console.log("x.address.door -> 1");
+	console.log("x.address.geo.lat -> 128");
 
-		default:
-			break;
-	}
-	if (isDescendingSort) {
-		return placeHolderArray.reverse();
-	}
-	return placeHolderArray;
-};
+	console.log("--------------------------");
 
-/**
- * * Convert the string to lowercase.
- * * Replace any character that is followed by a (space|.|!|?) with the same character, but in uppercase
- * @param [currentString] - The string to be converted to sentence case.
- * @returns The original string, but with the first letter of each sentence capitalized.
- */
-const getSentenceCasedString = (currentString = "") => {
-	return currentString
-		.toString()
-		.toLowerCase()
-		.replace(/(^\s*\w|[\.\!\?]\s*\w)/g, function (c) {
-			return c.toUpperCase();
-		});
-};
+	console.log("Copying x to y with spread operator -> y = {...x}");
+	console.log("Copying x to z with deep copy function -> z = deepCopy(x)");
+	let y = { ...x };
+	let z = deepCopy(x);
 
-/**
- * Check if the bottom of an element is within 5 pixels of the bottom of the window
- * @param [element=null] - The element to check. If not specified, the body element is used.
- * @returns A boolean value.
- */
-const hasElementScrollReachedBottom = (element = null) => {
-	let scrollTop = 0;
-	if (!element) {
-		scrollTop = window.pageYOffset;
-		element = document.querySelector("body");
-	} else {
-		scrollTop = element.scrollTop;
-	}
-	return Math.abs(element.clientHeight - (element.scrollHeight - scrollTop)) < 5;
+	console.log("--------------------------");
+
+	console.log("changing y.name to VP2");
+	y["name"] = "VP2";
+
+	console.log("changing y.address.door to 11");
+	y["address"]["door"] = 11;
+
+	console.log("changing y.address.geo.lat to 200");
+	y["address"]["geo"]["lat"] = 200;
+
+	console.log("changing z.address.geo.lat to 98");
+	z["address"]["geo"]["lat"] = 98;
+
+	console.log("--------------------------");
+
+	console.log("After changes");
+
+	console.log(`x.name -> ${x.name}`);
+	console.log(`x.address.door -> ${x.address.door}`);
+	console.log(`x.address.geo.lat -> ${x.address.geo.lat}`);
+	console.log("-----------");
+	console.log(`y.name -> ${y.name}`);
+	console.log(`y.address.door -> ${y.address.door}`);
+	console.log(`y.address.geo.lat -> ${y.address.geo.lat}`);
+	console.log("-----------");
+	console.log(`z.name -> ${z.name}`);
+	console.log(`z.address.door -> ${z.address.door}`);
+	console.log(`z.address.geo.lat -> ${z.address.geo.lat}`);
+
+	console.log("Changes to nested objects in y affecting those in x. But changes to nested objects in z is not affecting those in x or y as z is deep copied.");
 };
